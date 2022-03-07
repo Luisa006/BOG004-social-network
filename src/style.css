@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+@media only screen and (max-width: 575px){
+    #logo{
+      width: 50%;
+      height: auto;
+      margin-left: 1em;
+    }
+    .girl{
+        width: 50%;
+        display: block;
+        margin: auto;
+    }
+    p{
+        text-align: center;
+        width: 50%;
+        display: block;
+        margin: auto;
+        font-family:'Baloo Da 2';
+    }
+    #join{
+        font-family:'Baloo Da 2';
+        font-weight: 600;
+        background: #F9C2A9;
+        display: block;
+        margin: auto;
+        padding-left: 5%;
+        padding-right: 5%;
+        margin-top: 3%;
+    }
+    h2{
+        text-align: center;
+        width: 50%;
+        display: block;
+        margin: auto;
+        font-family:'Baloo Da 2';
+    }
+    .form{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin: auto;
+        margin-top: 2em;
+    }
+    .signUp{
+        font-family:'Baloo Da 2';
+        font-weight: 600;
+        text-align: center;
+        background: #F9DFC9;        ;
+        display: block;
+        padding-left: 5%;
+        padding-right: 5%;
+        margin-top: 4%;
+    }
+    #btnSignUp{
+        font-family:'Baloo Da 2';
+        font-weight: 600;
+        background: #F9C2A9;
+        display: block;
+        margin: auto;
+        padding-left: 5%;
+        padding-right: 5%;
+        margin-top: 7%;
+    }
+    .btngoogle{
+        width: 20%;
+        margin: auto;
+    }
+    h4{
+        text-align: center;
+        font-family:'Baloo Da 2';
+    }
+    .dog-cat{
+        width: 50%;
+        display: block;
+        margin: auto;
+    }
+}
+#pag2{
+    display: none;
+}
