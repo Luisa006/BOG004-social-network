@@ -11,7 +11,7 @@ export default () => {
     const divElem = document.createElement('div')
         divElem.innerHTML = viewHome;
         divElem.querySelector("#join").addEventListener("click", () => {
-        changeView("#/signIn");
+        window.location.href="http://127.0.0.1:5501/src/index.html#/signUp"
           
         });
        

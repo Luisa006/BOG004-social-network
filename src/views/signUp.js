@@ -1,3 +1,5 @@
+import { changeView } from "../view-controler/router.js";
+
 export default () => {
   const viewSignUp = `
   <section id="pag2">
@@ -15,6 +17,9 @@ export default () => {
 
   const divElem = document.createElement('div')
   divElem.innerHTML = viewSignUp;
+  divElem.querySelector("#btnSignUp").addEventListener("click", () => {
+    window.location.href = "http://127.0.0.1:5501/src/index.html?#/logIn"
+  });
 
   return divElem;
 }
