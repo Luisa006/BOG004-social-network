@@ -1,22 +1,21 @@
-// aqui exportaras las funciones que necesites
+/* eslint-disable semi */
 
-// export const myFunction = () => {
-//   // aqui tu codigo
-//   console.log('Hola mundo!');
-// };
+// eslint-disable-next-line
 import Home from './home.js'
+// eslint-disable-next-line
 import signUp from './signUp.js'
+// eslint-disable-next-line
 import logIn from './logIn.js'
+// eslint-disable-next-line import/no-cycle
 import feed from './feed.js'
-import Different from './404.js'
+import Different from './404.js';
 
 const components = {
-    home: Home,
-    signUp: signUp,
-    logIn: logIn,
-    feed: feed,
-    different: Different
-    
-}
+  home: Home,
+  signUp: signUp,
+  logIn: logIn,
+  feed: feed,
+  different: Different,
+};
 
 export { components };

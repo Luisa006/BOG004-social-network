@@ -1,17 +1,14 @@
 // Este es el punto de entrada de tu aplicacion
 
-/*import { myFunction } from './lib/index.js';
-
-myFunction();*/
-import { changeView } from './view-controler/router.js'
+import { changeView } from './view-controler/router.js';
 
 const init = () => {
-    changeView("#/")
-    window.addEventListener('hashchange', () => changeView(window.location.hash))
-}
+  changeView('#/');
+  window.addEventListener('hashchange', () => changeView(window.location.hash));
+};
 
-window.addEventListener('load', init()) // cada vez que escuches un load ejecutame funcion init
-
+window.addEventListener('load', init());
+// cada vez que escuches un load ejecutame funcion init
 
 // import { login } from "./firebase/Auth.js";
 // const signupForm = document.querySelector("#signup-form");
