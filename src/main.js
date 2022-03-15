@@ -10,7 +10,7 @@ const init = () => {
     window.addEventListener('hashchange', () => changeView(window.location.hash))
 }
 
-window.addEventListener('load', init) // cada vez que escuches un load ejecutame funcion init
+window.addEventListener('load', init()) // cada vez que escuches un load ejecutame funcion init
 
 
 // import { login } from "./firebase/Auth.js";

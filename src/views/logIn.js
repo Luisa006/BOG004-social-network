@@ -1,3 +1,4 @@
+import { changeView } from "../view-controler/router.js";
 import { login } from "../firebase/Auth.js";
 export default () => {
     const viewlogIn = `
@@ -8,15 +9,18 @@ export default () => {
     <div class="form-group">
       <input type="password" id="signup-password" class="form-control" placeholder="Password" required>
     </div>
-    <button type="submit" id="btnLohIn" class="btn btn-primary">Save changes</button>
+    <button type="submit" id="btnLogIn" class="btn btn-primary">Save changes</button>
   </form>`
 
     const divElem = document.createElement('div')
     divElem.innerHTML = viewlogIn;
-     divElem.querySelector("#btnLohIn").addEventListener("click", () => {
+         divElem.querySelector("#btnLogIn").addEventListener("click", () => {
+          changeView('#/feed')
         const email = divElem.querySelector("#signup-email").value;
         const password = divElem.querySelector("#signup-password").value;
-        login(email, password);
+        console.log(email, password);
+        // login(email, password);
+        
         
      });
     return divElem;

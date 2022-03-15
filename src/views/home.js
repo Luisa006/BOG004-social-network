@@ -6,15 +6,20 @@ export default () => {
     <p>Ayuda a un perrito o gatito brindandole un hogar temporal y dales la oportunidad de ser amados mientras
       encuentran una familia para toda su vida. </p>
     <button id="join">UNIRSE AHORA</button>
+    <button id="btnLog">INICIAR SESION</button>
   </section>`
 
     const divElem = document.createElement('div')
         divElem.innerHTML = viewHome;
         divElem.querySelector("#join").addEventListener("click", () => {
-        window.location.href="http://127.0.0.1:5501/src/index.html#/signUp"
+        window.location.href="#/signUp"
           
         });
-       
+        divElem.querySelector("#btnLog").addEventListener("click", () => {
+          window.location.href="#/logIn"
+            
+          });
+         
 
     return divElem;
 }
