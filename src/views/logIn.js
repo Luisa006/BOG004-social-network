@@ -22,6 +22,7 @@ export default () => {
     const password = divElem.querySelector('#signup-password').value;
     console.log(email, password);
     // login(email, password);
+    history.pushState(null, "LogIn", '#/feed')
   });
   return divElem;
 };

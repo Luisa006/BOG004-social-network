@@ -21,6 +21,7 @@ export default () => {
   divElem.querySelector('#btnSignUp').addEventListener('click', () => {
     // window.location.hash = "#/logIn"
     changeView('#/logIn');
+    history.pushState(null, "LogIn", '#/logIn')
   });
 
   return divElem;
