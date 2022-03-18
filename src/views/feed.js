@@ -8,7 +8,7 @@ export default () => {
   divElem.innerHTML = viewHome;
   divElem.querySelector('#btnHome').addEventListener('click', () => {
     changeView('#/');
-    history.pushState(null, "LogIn", '#/')
+    history.pushState(null, 'LogIn', '#/');
   });
   return divElem;
 };

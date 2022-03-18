@@ -1,27 +1,30 @@
 // eslint-disable-next-line
-import { changeView } from "../view-controler/router.js";
+import { authentication } from "../firebase/Auth.js";
 
 export default () => {
   const viewSignUp = `
   <section id="pag2">
   <h2>REGÍSTRATE</h2>
-  <form class="form">
-    <input id="email" class="signUp" type="email"  placeholder="e-mail">
-    <input id="user" class="signUp" type="text"  placeholder="usuario">
-    <input id="password" class="signUp" type="password" placeholder="contraseña">
-    <button id="btnSignUp">REGÍSTRATE</button>
+  <form class="formSignUp">
+    <input id="email" class="inputForm" type="email"  placeholder="e-mail">
+    <input id="user" class="inputForm" type="text"  placeholder="usuario">
+    <input id="password" class="inputForm" type="password" placeholder="contraseña">
+    <button id="btnSignUp">Registrate</button>
+    <div id='notification'></div>
     <img class="btngoogle" src="img/gg-removebg-preview.png" alt="logoGoogle">
   </form>
-    <h4>¿Ya tienes cuenta? Inicia Sesión </h4>
+    <h4> ¿Ya tienes cuenta? <a id="linkLogin" href="#/logIn"> Inicia Sesión </a> </h4>
     <img class="dog-cat" src="./img/image (2).png" alt="dog-Cat">
 </section>`;
 
   const divElem = document.createElement('div');
   divElem.innerHTML = viewSignUp;
   divElem.querySelector('#btnSignUp').addEventListener('click', () => {
-    // window.location.hash = "#/logIn"
-    changeView('#/logIn');
-    history.pushState(null, "LogIn", '#/logIn')
+    const email = divElem.querySelector('#email').value;
+    // const user= divElem.querySelector('#user').value;
+    const password = divElem.querySelector('#password').value;
+    console.log(email, password);
+    authentication(email, password, divElem);
   });
 
   return divElem;
