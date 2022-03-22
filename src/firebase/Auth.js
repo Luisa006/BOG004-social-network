@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "./firebaseImport.js";
 import { changeView } from "../view-controler/router.js";
 
 export const authentication = (email, password, divElem) => {
