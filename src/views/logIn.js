@@ -4,11 +4,13 @@ import { changeView } from "../view-controler/router.js";
 import { login } from "../firebase/Auth.js";
 export default () => {
   const viewlogIn = `
+   <div class='containerLogIn'>
     <h2>LOGIN</h2> <form class="formLogIn">
     <input type="text" id="signup-email" class="inputForm" placeholder="e-mail" required>
     <input type="password" id="signup-password" class="inputForm" placeholder="contraseña" required>
     <button type="submit" id="btnLogIn">Iniciar sesión</button>
-  </form>`;
+  </form>
+  </div> `;
 
   const divElem = document.createElement('div');
   divElem.innerHTML = viewlogIn;
