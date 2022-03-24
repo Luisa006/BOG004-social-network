@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "./firebaseImport.js";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from "./firebaseImport.js";
 // eslint-disable-next-line
 import { changeView } from "../view-controler/router.js";
 
