@@ -1,19 +1,11 @@
 // eslint-disable-next-line
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from "./firebaseImport.js";
+import { createUser, signIn } from "../view-controler/controllers";
 // eslint-disable-next-line
 import { changeView } from "../view-controler/router.js";
 
 export const authentication = (email, password, divElem) => {
-  const auth = getAuth();
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      sendEmailVerification(auth.currentUser)
-        .then(() => {
-        // Email verification sent!
-        });
-
+  createUser(email, password)
+    .then(() => {
       changeView('#/logIn');
       // eslint-disable-next-line no-restricted-globals
       history.pushState(null, 'LogIn', '#/logIn');
@@ -43,8 +35,7 @@ export const authentication = (email, password, divElem) => {
 };
 
 export const login = (email, password) => {
-  const auth = getAuth();
-  return signInWithEmailAndPassword(auth, email, password)
+  return signIn(email, password)
     .then((userCredential) => {
       // alert('login exitoso');
       const user = userCredential.user;
