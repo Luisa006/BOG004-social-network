@@ -1,7 +1,10 @@
 // eslint-disable-next-line
-import { createUser, signIn } from "../view-controler/controllers";
+import { createUser, signIn } from "../view-controler/controllers.js";
 // eslint-disable-next-line
 import { changeView } from "../view-controler/router.js";
+import { GoogleAuthProvider, signInWithPopup, getAuth } from "../firebase/firebaseImport.js";
+
+const provider = new GoogleAuthProvider();
 
 export const authentication = (email, password, divElem) => {
   createUser(email, password)
@@ -35,7 +38,7 @@ export const authentication = (email, password, divElem) => {
 };
 
 export const login = (email, password) => {
-  return signIn(email, password)
+ return signIn(email, password)
     .then((userCredential) => {
       // alert('login exitoso');
       const user = userCredential.user;
@@ -47,5 +50,51 @@ export const login = (email, password) => {
       alert('login erroneo');
       console.log(errorCode);
       console.log(errorMessage);
+    });
+};
+
+// // Login con Google
+// export const logInGoogle= () => {
+//   userGoogle(auth, provider)
+//     .then((result) => {
+//     // This gives you a Google Access Token. You can use it to access the Google API.
+//       const credential = GoogleAuthProvider.credentialFromResult(result);
+//       const token = credential.accessToken;
+//       // The signed-in user info.
+//       const user = result.user;
+//     // ...
+//     }).catch((error) => {
+//     // Handle Errors here.
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       // The email of the user's account used.
+//       const email = error.email;
+//       // The AuthCredential type that was used.
+//       const credential = GoogleAuthProvider.credentialFromError(error);
+//     // ...
+//     });
+// };
+export const logInGoogle = () => {
+  const auth = getAuth();
+  signInWithPopup(auth, provider)
+    .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      console.log(`El usuario ${user} se ha autenticado!!!`);
+      window.location = '#/feed';
+
+    // ...
+    }).catch((error) => {
+    // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
     });
 };
