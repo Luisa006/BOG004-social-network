@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { authentication } from "../firebase/Auth.js";
+import { authentication, logInGoogle } from "../firebase/Auth.js";
 
 export default () => {
   const viewSignUp = `
@@ -12,7 +12,7 @@ export default () => {
     <input id="password" class="inputForm" type="password" placeholder="contraseña">
     <button id="btnSignUp">Registrate</button>
     <div id='notification'></div>
-    <img class="btngoogle" src="img/gg-removebg-preview.png" alt="logoGoogle">
+    <img id="btnGoogle" class="btngoogle" src="img/gg-removebg-preview.png" alt="logoGoogle">
   </form>
     <h4> ¿Ya tienes cuenta? <a id="linkLogin" href="#/logIn"> Inicia Sesión </a> </h4>
     </div>
@@ -27,6 +27,11 @@ export default () => {
     const password = divElem.querySelector('#password').value;
     console.log(email, password);
     authentication(email, password, divElem);
+  });
+  divElem.querySelector('#btnGoogle').addEventListener('click', () => {
+    console.log('btnGoogle');
+    // e.preventDefault();
+    logInGoogle();
   });
 
   return divElem;
