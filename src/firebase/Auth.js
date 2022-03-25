@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { createUser, signIn } from "../view-controler/controllers";
+import { createUser, signIn } from "../view-controler/controllers.js";
 // eslint-disable-next-line
 import { changeView } from "../view-controler/router.js";
 
