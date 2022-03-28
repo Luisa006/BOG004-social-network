@@ -29,7 +29,8 @@ export default () => {
 
   const divElem = document.createElement('div');
   divElem.innerHTML = viewSignUp;
-  divElem.querySelector('#btnSignUp').addEventListener('click', () => {
+  divElem.querySelector('#btnSignUp').addEventListener('click', (e) => {
+    e.preventDefault();
     const email = divElem.querySelector('#email').value;
     // const user= divElem.querySelector('#user').value;
     const password = divElem.querySelector('#password').value;
@@ -39,7 +40,6 @@ export default () => {
   divElem.querySelector('#btnGoogle').addEventListener('click', () => {
     const provider = new GoogleAuthProvider();
     console.log('btnGoogle');
-    // e.preventDefault();
     userGoogle()
       .then((result) => {
       // The signed-in user info.
