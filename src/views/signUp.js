@@ -20,7 +20,12 @@ export default () => {
     <h4> ¿Ya tienes cuenta? <a id="linkLogin" href="#/logIn"> Inicia Sesión </a> </h4>
     </div>
     <img class="dog-cat" src="./img/image (2).png" alt="dog-Cat">
-</section>`;
+</section>
+<div class='container-Home-Dos'>
+<img class="girl" src="./img/image_ccexpress.png" alt="girl">
+<p>Ayuda a un perrito o gatito brindandole un hogar temporal y dales la oportunidad de ser amados mientras
+  encuentran una familia para toda su vida. </p>
+</div>`;
 
   const divElem = document.createElement('div');
   divElem.innerHTML = viewSignUp;
