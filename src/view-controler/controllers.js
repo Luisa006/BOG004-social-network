@@ -1,5 +1,5 @@
-import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification } from "../firebase/firebaseImport.js";
-// import { GoogleAuthProvider, signInWithPopup } from "../firebase/firebaseImport.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification } from "../firebase/firebaseImport.js";
+//import { GoogleAuthProvider, signInWithPopup } from "../firebase/firebaseImport.js";
 
 export const createUser = (email, password) => {
   const auth = getAuth();
@@ -11,14 +11,16 @@ export const createUser = (email, password) => {
         .then(() => {
         // Email verification sent!
         });
-      return userCredential;
+      return user;
     });
 };
 
-export const signIn = () => {
+export const signIn = (email, password) => {
   const auth = getAuth();
   return signInWithEmailAndPassword(auth, email, password);
 };
+
+
 
 // Google
 // export const userGoogle = (email, password) => {

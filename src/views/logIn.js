@@ -9,18 +9,19 @@ export default () => {
     <input type="text" id="signup-email" class="inputForm" placeholder="e-mail" required>
     <input type="password" id="signup-password" class="inputForm" placeholder="contraseña" required>
     <button type="submit" id="btnLogIn">Iniciar sesión</button>
+    <div id='notificationLog'></div>
   </form>
   </div> `;
 
   const divElem = document.createElement('div');
   divElem.innerHTML = viewlogIn;
   divElem.querySelector('#btnLogIn').addEventListener('click', () => {
-    changeView('#/feed');
+    // changeView('#/feed');
     const email = divElem.querySelector('#signup-email').value;
     const password = divElem.querySelector('#signup-password').value;
     console.log(email, password);
-    login(email, password);
-    history.pushState(null, 'LogIn', '#/feed');
+    login(email, password, divElem);
+    // history.pushState(null, 'LogIn', '#/feed');
   });
   return divElem;
 };

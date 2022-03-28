@@ -4,7 +4,7 @@ import { createUser, signIn } from "../view-controler/controllers.js";
 import { changeView } from "../view-controler/router.js";
 import { GoogleAuthProvider, signInWithPopup, getAuth } from "../firebase/firebaseImport.js";
 
-const provider = new GoogleAuthProvider();
+
 
 export const authentication = (email, password, divElem) => {
   createUser(email, password)
@@ -12,7 +12,7 @@ export const authentication = (email, password, divElem) => {
       changeView('#/logIn');
       // eslint-disable-next-line no-restricted-globals
       history.pushState(null, 'LogIn', '#/logIn');
-      // document.getElementById('notification').innerHTML = 'Su registro fue exitoso';
+      document.getElementById('notification').innerHTML = 'Se envió un correo de verificación';
       console.log(user, 'exitoso');
       // ...
     })
@@ -37,21 +37,63 @@ export const authentication = (email, password, divElem) => {
     });
 };
 
-export const login = (email, password) => {
- return signIn(email, password)
+// export const login = (email, password) => {
+//   return signIn(email, password)
+//     .then((userCredential) => {
+
+//       changeView('#/logIn');
+//      alert('login exitoso');
+//       const user = userCredential.user;
+//       console.log(user);
+//     })
+//     .catch((error) => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       alert('login erroneo');
+//       console.log(errorCode);
+//       console.log(errorMessage);
+//     });
+// };
+
+// auth/user-not-found
+
+export const login = (email, password, divElem) => {
+  signIn(email, password)
     .then((userCredential) => {
-      // alert('login exitoso');
+      changeView('#/feed');
+      // eslint-disable-next-line no-restricted-globals
+      history.pushState(null, 'LogIn', '#/logIn');
+      // document.getElementById('notification').innerHTML = 'Su registro fue exitoso';
+      // ...
+      alert('login exitoso');
       const user = userCredential.user;
       console.log(user);
     })
     .catch((error) => {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      alert('login erroneo');
       console.log(errorCode);
-      console.log(errorMessage);
+      const notificationLog = divElem.querySelector('#notificationLog');
+      console.log(notificationLog);
+      switch (errorCode) {
+        case 'auth/user-not-found':
+          notificationLog.innerText = 'Correo no Registrado';
+          break;
+        default:
+          break;
+
+      // alert('login erroneo');
+      // console.log(errorCode);
+      // console.log(errorMessage);
+      }
     });
 };
+
+
+
+
+
+
+
 
 // // Login con Google
 // export const logInGoogle= () => {
@@ -74,11 +116,16 @@ export const login = (email, password) => {
 //     // ...
 //     });
 // };
+
+
+
+
 export const logInGoogle = () => {
   const auth = getAuth();
+  const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
     .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
+      // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       // The signed-in user info.
@@ -86,15 +133,15 @@ export const logInGoogle = () => {
       console.log(`El usuario ${user} se ha autenticado!!!`);
       window.location = '#/feed';
 
-    // ...
+      // ...
     }).catch((error) => {
-    // Handle Errors here.
+      // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
       // The email of the user's account used.
       const email = error.email;
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
+      // ...
     });
 };

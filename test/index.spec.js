@@ -8,7 +8,8 @@ describe('authentication', () => {
   it('debería ser una función', () => {
     expect(typeof authentication).toBe('function');
   });
-  it('deberia retornar Correo Invalido para el caso auth/invalid-email', () => {
+  it('deberia retornar Correo Invalido para el caso auth/invalid-email', async () => {
+    expect.assertions(1);
     const divElem = signUp();
     const password = divElem.querySelector('#password');
     password.value = '123456';
@@ -18,8 +19,13 @@ describe('authentication', () => {
     const boton = divElem.querySelector('#btnSignUp');
     boton.dispatchEvent(new Event('click'));
     const notification = divElem.querySelector('#notification');
-    return authentication.catch(() => {
+    /* return authentication.catch(() => {
       expect(notification.textContent).toBe('Correo Invalido');
-    });
+    }); */
+    try {
+      await authentication(email, password, divElem);
+    } catch (error) {
+      expect(error.code).toBe('auth/invalid-email');
+    }
   });
 });
