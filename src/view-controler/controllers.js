@@ -1,5 +1,7 @@
-import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification } from "../firebase/firebaseImport.js";
-// import { GoogleAuthProvider, signInWithPopup } from "../firebase/firebaseImport.js";
+import {
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification,
+} from "../firebase/firebaseImport.js";
+import { GoogleAuthProvider, signInWithPopup } from "../firebase/firebaseImport.js";
 
 export const createUser = (email, password) => {
   const auth = getAuth();
@@ -21,9 +23,8 @@ export const signIn = () => {
 };
 
 // Google
-// export const userGoogle = (email, password) => {
-// const provider = new GoogleAuthProvider();
-// const auth = getAuth();
-// return signInWithPopup(auth, provider);
-
-// };
+export const userGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth();
+  return signInWithPopup(auth, provider);
+};
