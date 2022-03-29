@@ -2,6 +2,7 @@
 import { createUser, signIn, userGoogle } from "../view-controler/controllers.js";
 // eslint-disable-next-line
 import { changeView } from "../view-controler/router.js";
+import { GoogleAuthProvider } from './firebaseImport.js';
 
 export const authentication = (email, password, divElem) => {
   createUser(email, password)
@@ -60,4 +61,26 @@ export const login = (email, password, divElem) => {
           break;
       }
     });
+};
+export const btnGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  console.log('btnGoogle');
+  // e.preventDefault();
+  userGoogle()
+    .then((result) => {
+    // The signed-in user info.
+      const user = result.user;
+      console.log(`El usuario ${user} se ha autenticado!!!`);
+      window.location.href = '#/feed';
+
+  // ...
+  }).catch((error) => {
+  // Handle Errors here.
+    const errorCode = error.code;
+    // const errorMessage = error.message;
+    // // The email of the user's account used.
+    const email = error.email;
+  // The AuthCredential type that was used.
+  // ...
+  });
 };
