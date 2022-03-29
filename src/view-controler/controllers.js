@@ -22,8 +22,6 @@ export const signIn = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
 
-
-
 // Google
 export const userGoogle = () => {
   const provider = new GoogleAuthProvider();

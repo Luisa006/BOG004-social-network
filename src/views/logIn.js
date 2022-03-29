@@ -1,7 +1,7 @@
 // eslint-disable-next-line
-import { changeView } from "../view-controler/router.js";
+//import { changeView } from "../view-controler/router.js";
 // eslint-disable-next-line
-import { login } from "../firebase/Auth.js";
+import { login, btnGoogle} from "../firebase/Auth.js";
 export default () => {
   const viewlogIn = `
    <div class='containerLogIn'>
@@ -29,6 +29,9 @@ export default () => {
     console.log(email, password);
     login(email, password, divElem);
     // history.pushState(null, 'LogIn', '#/feed');
+  });
+  divElem.querySelector('#btnGoogle').addEventListener('click', () => {
+    btnGoogle();
   });
   return divElem;
 };

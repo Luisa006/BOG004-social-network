@@ -1,8 +1,8 @@
 /* eslint-disable quotes */
 // eslint-disable-next-line
-import { authentication } from "../firebase/Auth.js";
-import { userGoogle } from "../view-controler/controllers.js";
-import { GoogleAuthProvider } from "../firebase/firebaseImport.js";
+import { authentication, btnGoogle } from "../firebase/Auth.js";
+// import { userGoogle } from "../view-controler/controllers.js";
+// import { GoogleAuthProvider } from "../firebase/firebaseImport.js";
 
 export default () => {
   const viewSignUp = `
@@ -37,26 +37,27 @@ export default () => {
     authentication(email, password, divElem);
   });
   divElem.querySelector('#btnGoogle').addEventListener('click', () => {
-    const provider = new GoogleAuthProvider();
-    console.log('btnGoogle');
-    // e.preventDefault();
-    userGoogle()
-      .then((result) => {
-      // The signed-in user info.
-        const user = result.user;
-        console.log(`El usuario ${user} se ha autenticado!!!`);
-        window.location.href = '#/feed';
+    btnGoogle();
+    // const provider = new GoogleAuthProvider();
+    // console.log('btnGoogle');
+    // // e.preventDefault();
+    // userGoogle()
+    //   .then((result) => {
+    //   // The signed-in user info.
+    //     const user = result.user;
+    //     console.log(`El usuario ${user} se ha autenticado!!!`);
+    //     window.location.href = '#/feed';
 
-      // ...
-      }).catch((error) => {
-      // Handle Errors here.
-        const errorCode = error.code;
-        // const errorMessage = error.message;
-        // // The email of the user's account used.
-        const email = error.email;
-      // The AuthCredential type that was used.
-      // ...
-      });
+    //   // ...
+    //   }).catch((error) => {
+    //   // Handle Errors here.
+    //     const errorCode = error.code;
+    //     // const errorMessage = error.message;
+    //     // // The email of the user's account used.
+    //     const email = error.email;
+    //   // The AuthCredential type that was used.
+    //   // ...
+    //   });
   });
 
   return divElem;
