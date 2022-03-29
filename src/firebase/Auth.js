@@ -35,53 +35,30 @@ export const authentication = (email, password, divElem) => {
     });
 };
 
-// export const login = (email, password) => {
-//   return signIn(email, password)
-//     .then((userCredential) => {
-
-//       changeView('#/logIn');
-//      alert('login exitoso');
-//       const user = userCredential.user;
-//       console.log(user);
-//     })
-//     .catch((error) => {
-//       const errorCode = error.code;
-//       const errorMessage = error.message;
-//       alert('login erroneo');
-//       console.log(errorCode);
-//       console.log(errorMessage);
-//     });
-// };
-
-// auth/user-not-found
-
 export const login = (email, password, divElem) => {
   signIn(email, password)
-    .then((userCredential) => {
+    .then(() => {
       changeView('#/feed');
       // eslint-disable-next-line no-restricted-globals
       history.pushState(null, 'LogIn', '#/logIn');
-      // document.getElementById('notification').innerHTML = 'Su registro fue exitoso';
-      // ...
-      alert('login exitoso');
-      const user = userCredential.user;
-      console.log(user);
     })
     .catch((error) => {
       const errorCode = error.code;
       console.log(errorCode);
-      const notificationLog = divElem.querySelector('#notificationLog');
-      console.log(notificationLog);
+      const notification = divElem.querySelector('#notification');
+      console.log(notification);
       switch (errorCode) {
         case 'auth/user-not-found':
-          notificationLog.innerText = 'Correo no Registrado';
+          notification.innerText = 'Correo no Registrado';
+          break;
+        case 'auth/wrong-password':
+          notification.innerText = 'Contraseña incorrecta';
+          break;
+        case 'auth/invalid-email':
+          notification.innerText = 'Correo Invalido';
           break;
         default:
           break;
-
-      // alert('login erroneo');
-      // console.log(errorCode);
-      // console.log(errorMessage);
       }
     });
 };

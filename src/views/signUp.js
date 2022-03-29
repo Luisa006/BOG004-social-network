@@ -1,8 +1,7 @@
 /* eslint-disable quotes */
 // eslint-disable-next-line
 import { authentication, btnGoogle } from "../firebase/Auth.js";
-// import { userGoogle } from "../view-controler/controllers.js";
-// import { GoogleAuthProvider } from "../firebase/firebaseImport.js";
+import { userGoogle } from "../view-controler/controllers.js";
 
 export default () => {
   const viewSignUp = `
@@ -29,7 +28,8 @@ export default () => {
 
   const divElem = document.createElement('div');
   divElem.innerHTML = viewSignUp;
-  divElem.querySelector('#btnSignUp').addEventListener('click', () => {
+  divElem.querySelector('#btnSignUp').addEventListener('click', (e) => {
+    e.preventDefault();
     const email = divElem.querySelector('#email').value;
     // const user= divElem.querySelector('#user').value;
     const password = divElem.querySelector('#password').value;
@@ -37,28 +37,25 @@ export default () => {
     authentication(email, password, divElem);
   });
   divElem.querySelector('#btnGoogle').addEventListener('click', () => {
-    btnGoogle();
-    // const provider = new GoogleAuthProvider();
-    // console.log('btnGoogle');
-    // // e.preventDefault();
-    // userGoogle()
-    //   .then((result) => {
-    //   // The signed-in user info.
-    //     const user = result.user;
-    //     console.log(`El usuario ${user} se ha autenticado!!!`);
-    //     window.location.href = '#/feed';
+    console.log('btnGoogle');
+    userGoogle()
+      .then((result) => {
+      // The signed-in user info.
+        const user = result.user;
+        console.log(`El usuario ${user} se ha autenticado!!!`);
+        window.location.href = '#/feed';
 
-    //   // ...
-    //   }).catch((error) => {
-    //   // Handle Errors here.
-    //     const errorCode = error.code;
-    //     // const errorMessage = error.message;
-    //     // // The email of the user's account used.
-    //     const email = error.email;
-    //   // The AuthCredential type that was used.
-    //   // ...
-    //   });
+      //   // ...
+      //   }).catch((error) => {
+      //   // Handle Errors here.
+      //     const errorCode = error.code;
+      //     // const errorMessage = error.message;
+      //     // // The email of the user's account used.
+      //     const email = error.email;
+      //   // The AuthCredential type that was used.
+      //   // ...
+      //   });
+      });
   });
-
   return divElem;
 };
