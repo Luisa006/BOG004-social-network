@@ -1,7 +1,8 @@
 import {
-  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification,
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, GoogleAuthProvider, signInWithPopup,
+  getFirestore, collection, addDoc, getDocs,
 } from "../firebase/firebaseImport.js";
-import { GoogleAuthProvider, signInWithPopup } from "../firebase/firebaseImport.js";
+
 
 export const createUser = (email, password) => {
   const auth = getAuth();
@@ -28,3 +29,19 @@ export const userGoogle = () => {
   const auth = getAuth();
   return signInWithPopup(auth, provider);
 };
+
+
+
+export const savePost= async () => {
+  const db = getFirestore();
+  const querySnapshot = await getDocs(collection(db, 'Post Paw-Paw'));
+  let postList = [];
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    postList.push(data);
+    //console.log(`${doc.id} => ${data.Usuario} ${data.Comentario}`);
+  });
+  //console.log(postList)
+  return postList;
+};
+
