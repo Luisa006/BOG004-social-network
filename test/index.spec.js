@@ -10,7 +10,6 @@ describe('authentication', () => {
     // expect(typeof authentication).toBe('function');
   });
   it.only('deberia retornar Correo Invalido para el caso auth/invalid-email', (done) => {
-    //const auth = null;
     const email = 'testgmailcom';
     const password = '123456';
     // createUserWithEmailAndPassword (auth, email, password).catch((error) => {
@@ -26,11 +25,11 @@ describe('authentication', () => {
     // console.log(password.value, email.value);
     // const boton = divElem.querySelector('#btnSignUp');
     // boton.dispatchEvent(new Event('click'));
-    const notification = divElem.querySelector('#notification');
 
     authentication(email, password, divElem)
       .then(() => {
-        console.log('aaaaaaaaaaaaaaaaaaaa', notification.textContent)
+        const notification = divElem.querySelector('#notification');
+        expect(notification.innerText).toBe('Correo Invalido');
         done();
       });
   });
