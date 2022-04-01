@@ -17,5 +17,3 @@
 //         //console.error("Error adding document: ", e);
 //       }
 // };*/
-
-  
