@@ -16,9 +16,7 @@ export const authentication = (email, password, divElem) => createUser(email, pa
   })
   .catch((error) => {
     const errorCode = error.code;
-    console.log(errorCode);
     const notification = divElem.querySelector('#notification');
-    console.log(notification);
     switch (errorCode) {
       case 'auth/invalid-email':
         notification.innerText = 'Correo Invalido';
