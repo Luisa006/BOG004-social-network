@@ -32,9 +32,9 @@ export const userGoogle = () => {
 };
 
 // FireStore
-const db = getFirestore();
 
 export const savePost = async (post) => {
+  const db = getFirestore(); // lo acabe de agregar
   const docRef = await addDoc(collection(db, 'Post Paw-Paw'), {
     post,
   });
@@ -43,6 +43,7 @@ export const savePost = async (post) => {
 };
 
 export const getPosts = async () => {
+  const db = getFirestore(); // lo acabe
   const querySnapshot = await getDocs(collection(db, 'Post Paw-Paw'));
   const postList = [];
   querySnapshot.forEach((document) => {
@@ -53,10 +54,12 @@ export const getPosts = async () => {
 };
 
 export const deletePost = (id) => {
+  const db = getFirestore(); // lo acabe
   deleteDoc(doc(db, 'Post Paw-Paw', id));
 };
 
 export const editPost = async (post) => {
+  const db = getFirestore();
   // Add a new document in collection "cities"
   await setDoc(doc(db, 'Post Paw-Paw', post), {
     post,
