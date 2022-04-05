@@ -9,7 +9,7 @@ describe('authentication', () => {
   it('debería ser una función', () => {
     // expect(typeof authentication).toBe('function');
   });
-  it.only('deberia retornar Correo Invalido para el caso auth/invalid-email', (done) => {
+  it('deberia retornar Correo Invalido para el caso auth/invalid-email', (done) => {
     const email = 'testgmailcom';
     const password = '123456';
     // createUserWithEmailAndPassword (auth, email, password).catch((error) => {
