@@ -18,16 +18,21 @@ export default () => {
   getPosts().then((response) => {
     const containerPost = divElem.querySelector('#containerPost');
     response.forEach((element) => {
+      console.log(element);
       containerPost.innerHTML += `
         <h3>  ${element.id} </h3>
         <p> ${element.post} </p>
-        <button id="delete" data-set=${element.id}> Eliminar </button>   
-        <button id="edit" data-set='${element.id}', '${element.post}'> Editar </button>  
+        <button class="delete" data-set=${element.id}> Eliminar </button>   
+        <button class="edit" data-set='${element.id}', '${element.post}'> Editar </button>  
        `;
       // Eliminar Post
-      containerPost.querySelector('#delete').addEventListener('click', ({ target: { dataset } }) => {
-        console.log('boton borrar', dataset.set);
-        deletePost(dataset.set);
+      const feedPost = containerPost.querySelectorAll('.delete');
+      feedPost.forEach((item) => {
+        item.addEventListener('click', ({ target: { dataset } }) => {
+          console.log(feedPost);
+          console.log('boton borrar', dataset.set);
+          deletePost(dataset.set);
+        });
       });
     });
     // Publicar Post
@@ -36,7 +41,7 @@ export default () => {
       savePost(post);
     });
     // Editar Post
-    divElem.querySelector('#edit').addEventListener('click', ({ target: { dataset } }) => {
+    divElem.querySelector('.edit').addEventListener('click', ({ target: { dataset } }) => {
       console.log('editar', dataset.set);
       editPost(dataset.set);
     });
