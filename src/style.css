@@ -1,5 +1,4 @@
 *{
-    margin-top: 2%;
     margin: 0%;
     padding: 0;
     box-sizing: border-box;
@@ -315,6 +314,7 @@
         display: flex;
         justify-content: center;
         border-bottom: solid #E28C56;
+        margin-top: 5px
     }
 
     .logo{

@@ -1,7 +1,8 @@
+// import { async } from 'regenerator-runtime';
 import {
   getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification,
   GoogleAuthProvider, signInWithPopup,
-  getFirestore, collection, getDocs, addDoc,
+  getFirestore, collection, getDocs, addDoc, deleteDoc, doc, setDoc,
 } from '../firebase/firebaseImport.js';
 
 export const createUser = (email, password) => {
@@ -30,19 +31,34 @@ export const userGoogle = () => {
   return signInWithPopup(auth, provider);
 };
 
+// FireStore
+const db = getFirestore();
+
 export const savePost = async (post) => {
-  const db = getFirestore();
   const docRef = await addDoc(collection(db, 'Post Paw-Paw'), {
     post,
   });
-  console.log('Document written with ID: ', docRef.id);
+  // console.log('Document written with ID: ', docRef.id);
+  console.log(post);
+};
+
+export const getPosts = async () => {
   const querySnapshot = await getDocs(collection(db, 'Post Paw-Paw'));
   const postList = [];
-  querySnapshot.forEach((doc) => {
-    const data = doc.data();
-    postList.push(data);
-    console.log(`${doc.id} => ${data.Usuario} ${data.Comentario}`);
+  querySnapshot.forEach((document) => {
+    // console.log('doc: ', document);
+    postList.push({ post: document.data().post, id: document.id });
   });
-  console.log(postList);
   return postList;
+};
+
+export const deletePost = (id) => {
+  deleteDoc(doc(db, 'Post Paw-Paw', id));
+};
+
+export const editPost = async (post) => {
+  // Add a new document in collection "cities"
+  await setDoc(doc(db, 'Post Paw-Paw', post), {
+    post,
+  });
 };

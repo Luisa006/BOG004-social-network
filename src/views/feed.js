@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import { changeView } from "../view-controler/router.js";
-import { savePost } from '../view-controler/controllers.js';
+import { savePost, deletePost, getPosts, editPost } from '../view-controler/controllers.js';
 
 export default () => {
   const viewHome = `
@@ -13,29 +13,35 @@ export default () => {
     <div id="containerPost"></div> `;
   const divElem = document.createElement('div');
   divElem.innerHTML = viewHome;
-  divElem.querySelector('#btnPublishPost').addEventListener('click', (e) => {
-    const post = divElem.querySelector('#textPost').value;
-    console.log(post);
-    savePost(post).then((response) => {
-      console.log(response);
-      const containerPost = divElem.querySelector('#containerPost');
-      response.forEach((element) => {
-        containerPost.innerHTML = `
-    <h3> ${element.Usuario} </h3>
-    <p> ${element.post} </p>
-    `;
+
+  // Mostrar Post en la Pantalla
+  getPosts().then((response) => {
+    const containerPost = divElem.querySelector('#containerPost');
+    response.forEach((element) => {
+      containerPost.innerHTML += `
+        <h3>  ${element.id} </h3>
+        <p> ${element.post} </p>
+        <button id="delete" data-set=${element.id}> Eliminar </button>   
+        <button id="edit" data-set='${element.id}', '${element.post}'> Editar </button>  
+       `;
+      // Eliminar Post
+      containerPost.querySelector('#delete').addEventListener('click', ({ target: { dataset } }) => {
+        console.log('boton borrar', dataset.set);
+        deletePost(dataset.set);
       });
     });
-    e.preventDefault();
+    // Publicar Post
+    divElem.querySelector('#btnPublishPost').addEventListener('click', () => {
+      const post = divElem.querySelector('#textPost').value;
+      savePost(post);
+    });
+    // Editar Post
+    divElem.querySelector('#edit').addEventListener('click', ({ target: { dataset } }) => {
+      console.log('editar', dataset.set);
+      editPost(dataset.set);
+    });
   // changeView('#/');
   // history.pushState(null, 'LogIn', '#/');
   });
   return divElem;
 };
-
-// const getDivUser = document.getElementById('user-thinking');
-//     const user = data.user;
-//     getDivUser.innerHTML = user;
-//     const getDivThinking = document.getElementById('space-thinking');
-//     const thinking = data.thinking;
-//     getDivThinking.innerHTML = thinking;
