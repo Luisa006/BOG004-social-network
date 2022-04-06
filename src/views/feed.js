@@ -9,7 +9,7 @@ export default () => {
 <textarea id="textPost" placeholder="Publica aquí"></textarea>
 <button id="btnPublishPost" type="submit">Publicar</button>
 </form>
-    <button id="btnHome">HOME</button>
+     <button id="btnHome">HOME</button>
     <div id="containerPost"></div> `;
   const divElem = document.createElement('div');
   divElem.innerHTML = viewHome;

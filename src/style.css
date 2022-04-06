@@ -159,7 +159,7 @@
     
       }
       .girl{
-          width: 80%;
+          width: 40%;
           display: block;
           margin: auto;
           margin-top: 1px;
@@ -303,8 +303,56 @@
         padding-left: 5%;
         padding-right: 5%;
         margin-top: 7%;
+    }
+
+    #textPost{
+        font-family:'Baloo Da 2';
+        text-align: center;
+        font-size: 1.5em;
+        background: #F9C2A9;
+        display: block;
+        margin: auto;
+        padding-left: 7%;
+        padding-right: 7%;
 
     }
+    #btnPublishPost{
+        font-family:'Baloo Da 2';
+        text-align: center;
+        font-size: 1.5em;
+        background: #F9C2A9;
+        display: block;
+        margin: auto;
+        padding-left: 7%;
+        padding-right: 7%;
+        margin-top: 1.5%;
+        margin-bottom: 2%;
+    }
+    .delete{
+        font-family:'Baloo Da 2';
+        text-align: center;
+        font-size: 1em;
+        background: #F9C2A9;
+        display: block;
+        margin: auto;
+        padding-left: 7%;
+        padding-right: 7%;
+        margin-top: 1.5%;
+        margin-bottom: 2%;
+    }
+    .edit{
+        font-family:'Baloo Da 2';
+        text-align: center;
+        font-size: 1em;
+        background: #F9C2A9;
+        display: block;
+        margin: auto;
+        padding-left: 7%;
+        padding-right: 7%;
+        margin-top: 1.5%;
+        margin-bottom: 2%;
+    }
+
     footer{
         display: flex;
         justify-content: space-evenly;
@@ -339,7 +387,7 @@
     
       }
       .girl{
-          width: 50%;
+          width: 30%;
           display: block;
           margin: auto;
       }
@@ -378,7 +426,7 @@
      .container-Home-Dos{
         width: 50%;
         height: 50%;
-        margin-top: 50%;   
+        margin-top: 1em;   
        } 
 
     .containerSignUp{
@@ -388,7 +436,7 @@
         display: grid;
         float: right;
         justify-items: center;
-        margin-top: 50%;
+        margin-top: 2em;
         margin-right: 5%;
         /* padding-top: 2%;
         padding-bottom: 2%; */
@@ -405,7 +453,7 @@
     }
     .inputForm{
         font-family:'Baloo Da 2';
-        font-weight: 600;
+        font-weight: 200;
         text-align: center;
         background: #F9DFC9;        ;
         display: block;
@@ -423,8 +471,8 @@
         background: #F9C2A9;
         display: block;
         margin: auto;
-        padding-left: 5%;
-        padding-right: 5%;
+        /* padding-left: 5%;
+        padding-right: 5%; */
         margin-top: 7%;
     }
 
@@ -449,7 +497,7 @@
         display: grid;
         float: right;
         justify-items: center;
-        margin-top: 50%;
+        margin-top: 2em;
         margin-right: 2%;
         /* padding-top: 2%;
         padding-bottom: 2%; */
@@ -477,6 +525,7 @@
         margin-top: 7%;
 
     }
+    
     
     footer{
         display: flex;
