@@ -330,13 +330,12 @@
         display: flex;
         justify-content: center;
         border-bottom: solid #E28C56;
-        margin-top: 5px
     }
 
     .logo{
         width: 20%;
         height: auto;
-    
+        margin-bottom: 0.5em;
       }
       .girl{
           width: 50%;
@@ -378,8 +377,8 @@
      .container-Home-Dos{
         width: 50%;
         height: 50%;
-        margin-top: 50%;   
-       } 
+        margin-top: -2%;
+       }
 
     .containerSignUp{
         background-color: #E28C56 ;
@@ -388,18 +387,16 @@
         display: grid;
         float: right;
         justify-items: center;
-        margin-top: 50%;
+        margin-top: 4%;
         margin-right: 5%;
-        /* padding-top: 2%;
-        padding-bottom: 2%; */
         border-radius: 50px;
      
     }
     .formSignUp{
         display: flex;
         flex-direction: column;
-        width: 30%;
-        height: 50%;
+        width: 70%;
+        height: 55%;
         margin: auto;
         margin-top: 2em;
     }
@@ -445,14 +442,12 @@
     .containerLogIn{       
         background-color: #E28C56 ;
         width: 40%;
-        height: 50%;
         display: grid;
         float: right;
         justify-items: center;
-        margin-top: 50%;
-        margin-right: 2%;
-        /* padding-top: 2%;
-        padding-bottom: 2%; */
+        margin-top: 4%;
+        margin-right: 5%;
+        padding-bottom: 5%;
         border-radius: 50px;
        
     }
@@ -460,8 +455,8 @@
     .formLogIn{
         display: flex;
         flex-direction: column;
-        width: 30%;
-        height: 50%;
+        width: 70%;
+        height: 55%;
         margin: auto;
         margin-top: 2em;        
     }
