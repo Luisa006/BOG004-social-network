@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import { changeView } from "../view-controler/router.js";
-import { savePost, deletePost, getPosts, editPost } from '../view-controler/controllers.js';
+import { savePost, deletePost, getPosts, editPost,  } from '../view-controler/controllers.js';
 
 export default () => {
   let editFeed = false;
@@ -27,7 +27,7 @@ export default () => {
         <h3>  ${element.id} </h3>
         <p> ${element.post} </p>
         <button class="delete" data-set=${element.id}> Eliminar </button>   
-        <button class="edit" data-set='${element.id}', '${element.post}'> Editar </button>  
+        <button class="edit" data-id='${element.id}', '${element.post}'> Editar </button>  
        `;
       // Eliminar Post
       const feedPost = containerPost.querySelectorAll('.delete');
@@ -48,9 +48,9 @@ export default () => {
     const btnEdit = containerPost.querySelectorAll('.edit');
     btnEdit.forEach((btn) => {
       btn.addEventListener('click', async ({ target }) => {
-        const doc = await editPost(target);
-        console.log(doc);
-        const postData = doc.dataset();
+        console.log(target.dataset);
+        const doc = await editPost(target.dataset.id);
+        const postData = doc.dataset;
         textPost.value = postData.textPost;
         editFeed = true;
       // editPost(dataset.set);
