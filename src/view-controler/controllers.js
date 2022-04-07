@@ -58,10 +58,13 @@ export const deletePost = (id) => {
   deleteDoc(doc(db, 'Post Paw-Paw', id));
 };
 
-export const editPost = async (post) => {
+export const editPost = (id) => {
+  const db = getFirestore();
+  editPost(doc(db, 'Post Paw-Paw', id));
+};
+
+export const updatePost = (id, newPost) => {
   const db = getFirestore();
   // Add a new document in collection "cities"
-  await updateDoc(doc(db, 'Post Paw-Paw', post), {
-    post,
-  });
+  updateDoc(doc(db, 'Post Paw-Paw', id), newPost);
 };

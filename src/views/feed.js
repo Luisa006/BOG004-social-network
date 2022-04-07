@@ -3,6 +3,9 @@ import { changeView } from "../view-controler/router.js";
 import { savePost, deletePost, getPosts, editPost } from '../view-controler/controllers.js';
 
 export default () => {
+  let editFeed = false;
+  let idFeed = '';
+  let likeFeed = '';
   const viewHome = `
     <h2>FEED</h2>
     <form id="fromPost">
@@ -13,6 +16,7 @@ export default () => {
     <div id="containerPost"></div> `;
   const divElem = document.createElement('div');
   divElem.innerHTML = viewHome;
+  const textPost = divElem.querySelector('#textPost');
 
   // Mostrar Post en la Pantalla
   getPosts().then((response) => {
@@ -41,10 +45,21 @@ export default () => {
       savePost(post);
     });
     // Editar Post
-    divElem.querySelector('.edit').addEventListener('click', ({ target: { dataset } }) => {
-      console.log('editar', dataset.set);
-      editPost(dataset.set);
+    const btnEdit = containerPost.querySelectorAll('.edit');
+    btnEdit.forEach((btn) => {
+      btn.addEventListener('click', async ({ target }) => {
+        const doc = await editPost(target);
+        console.log(doc);
+        const postData = doc.dataset();
+        textPost.value = postData.textPost;
+        editFeed = true;
+      // editPost(dataset.set);
+      });
     });
+    // divElem.querySelector('.edit').addEventListener('click', ({ target: { dataset } }) => {
+    //   console.log('editar', dataset.set);
+    //   editPost(dataset.set);
+    // });
   // changeView('#/');
   // history.pushState(null, 'LogIn', '#/');
   });
