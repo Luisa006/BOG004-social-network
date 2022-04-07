@@ -2,7 +2,7 @@
 import {
   getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification,
   GoogleAuthProvider, signInWithPopup,
-  getFirestore, collection, getDocs, addDoc, deleteDoc, doc, updateDoc,
+  getFirestore, collection, getDocs, addDoc, deleteDoc, doc, updateDoc, getDoc,
 } from '../firebase/firebaseImport.js';
 
 export const createUser = (email, password) => {
@@ -58,9 +58,10 @@ export const deletePost = (id) => {
   deleteDoc(doc(db, 'Post Paw-Paw', id));
 };
 
-export const editPost = (id) => {
+export const editPost = async (id) => {
   const db = getFirestore();
-  editPost(doc(db, 'Post Paw-Paw', id));
+  const post = await getDoc(doc(db, 'Post Paw-Paw', id));
+  return post;
 };
 
 export const updatePost = (id, newPost) => {
