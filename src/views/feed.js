@@ -7,12 +7,10 @@ export default () => {
   let idFeed = '';
   let likeFeed = '';
   const viewHome = `
-    <h2>FEED</h2>
     <form id="fromPost">
 <textarea id="textPost" placeholder="Publica aquí"></textarea>
 <button id="btnPublishPost" type="submit">Publicar</button>
 </form>
-     <button id="btnHome">HOME</button>
     <div id="containerPost"></div> `;
   const divElem = document.createElement('div');
   divElem.innerHTML = viewHome;
@@ -24,10 +22,12 @@ export default () => {
     response.forEach((element) => {
       console.log(element);
       containerPost.innerHTML += `
+      <div class="stylePost">
         <h3>  ${element.id} </h3>
         <p> ${element.post} </p>
         <button class="delete" data-set=${element.id}> Eliminar </button>   
         <button class="edit" data-set='${element.id}', '${element.post}'> Editar </button>  
+        </div>
        `;
       // Eliminar Post
       const feedPost = containerPost.querySelectorAll('.delete');
