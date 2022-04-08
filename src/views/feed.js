@@ -24,10 +24,12 @@ export default () => {
       containerPost.innerHTML += `
       <div class="stylePost">
         <h3>  ${element.id} </h3>
-        <textarea disabled id=${element.id}> ${element.post} </textarea>
+        <textarea disabled class='textEdit' id=${element.id}> ${element.post} </textarea>
         <button class="delete" data-set=${element.id}> Eliminar </button>   
-        <button class="edit" data-id='${element.id}', '${element.post}'> Editar </button>  
+        <button class="edit" data-id='${element.id}', '${element.post}'> Editar </button>
+        <button class="saveEdit" data-id='${element.id}', '${element.post}'> Guardar </button>         
        `;
+
       // Eliminar Post
       const feedPost = containerPost.querySelectorAll('.delete');
       feedPost.forEach((item) => {
@@ -49,8 +51,11 @@ export default () => {
       btn.addEventListener('click', async ({ target }) => {
         console.log(target.dataset);
         const doc = await editPost(target.dataset.id);
-        document.querySelector(`#${target.dataset.id}`).removeAttribute('disabled');
-
+        containerPost.querySelector(`#${target.dataset.id}`).removeAttribute('disabled');
+        containerPost.querySelector('.saveEdit').addEventListener('click', () => {
+          const post = containerPost.querySelector('.textEdit').value;
+          savePost(post);
+        });
         // const postData = doc.dataset;
         // console.log(textPost);
         // // textPost.value = postData.textPost;
