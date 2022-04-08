@@ -5,6 +5,9 @@
   }
   /* pantalla para celular */
 @media only screen and (max-width: 575px){
+    header{
+        border-bottom: solid #E28C56;
+    }
     .logo{
       margin-top: 2em;
       width: 50%;
@@ -125,20 +128,61 @@
         padding-right: 5%;
         margin-top: 1em;
     }
-    /* footer{
-        display: flex;
-        justify-content: space-evenly;
-        background-color: rgb(0 0 0 / 36%);
-        color: white;
-        bottom: 0%;
-        width: 100%;
-        margin-top: 2%;
-    }
-    .authors{
+    #textPost{
         font-family:'Baloo Da 2';
-        font-size: 0.8em;
-    } */
+        text-align: center;
+        font-size: 1.5em;
+        background: #F9C2A9;
+        display: block;
+        margin: 8%;
+        margin-bottom: 0%;
+        padding-left: 7%;
+        padding-right: 7%;
 
+    }
+    #btnPublishPost{
+        font-family:'Baloo Da 2';
+        text-align: center;
+        font-size: 1em;
+        background: #F9C2A9;
+        display: block; 
+        margin: auto;
+        padding-left: 7%;
+        padding-right: 7%;
+        margin-top: 1%;
+        margin-bottom: 8%; 
+    }
+    .stylePost{
+        margin-bottom: 2%;
+        border: solid #F9C2A9;
+    }
+    h3{
+        font-family:'Baloo Da 2';
+        font-size: 1em;
+    }
+   
+    .delete{
+        font-family:'Baloo Da 2';
+        text-align: center;
+        font-size: 1em;
+        background: #F9C2A9;
+        margin: auto;
+        padding-left: 7%;
+        padding-right: 7%;
+        margin-top: 1.5%;
+        margin-bottom: 2%;
+    }
+    .edit{
+        font-family:'Baloo Da 2';
+        text-align: center;
+        font-size: 1em;
+        background: #F9C2A9;
+        margin: auto;
+        padding-left: 7%;
+        padding-right: 7%;
+        margin-top: 1.5%;
+        margin-bottom: 2%;
+    }
 }
 
 /*laptop // LA MEDIDA QUE NOS FALTABA PARA QUE SE VIERA BIEN EN CUALQUIER PANTALLA*/
@@ -312,6 +356,7 @@
         background: #F9C2A9;
         display: block;
         margin: auto;
+        margin-top: 7%;;
         padding-left: 7%;
         padding-right: 7%;
 
@@ -319,21 +364,30 @@
     #btnPublishPost{
         font-family:'Baloo Da 2';
         text-align: center;
-        font-size: 1.5em;
+        font-size: 1em;
         background: #F9C2A9;
-        display: block;
+        display: block; 
         margin: auto;
         padding-left: 7%;
         padding-right: 7%;
-        margin-top: 1.5%;
-        margin-bottom: 2%;
+        margin-top: 1%;
+        margin-bottom: 8%; 
     }
+    .stylePost{
+        margin-bottom: 2%;
+        border: solid #F9C2A9;
+        margin: 5%;;
+    }
+    h3{
+        font-family:'Baloo Da 2';
+        font-size: 1em;
+    }
+   
     .delete{
         font-family:'Baloo Da 2';
         text-align: center;
         font-size: 1em;
         background: #F9C2A9;
-        display: block;
         margin: auto;
         padding-left: 7%;
         padding-right: 7%;
@@ -345,7 +399,6 @@
         text-align: center;
         font-size: 1em;
         background: #F9C2A9;
-        display: block;
         margin: auto;
         padding-left: 7%;
         padding-right: 7%;
@@ -353,24 +406,6 @@
         margin-bottom: 2%;
     }
 
-    footer{
-        display: flex;
-        justify-content: space-evenly;
-        background-color: rgba(0, 0, 0, 0.493);;
-        color: white;
-        position: absolute;
-        bottom: 0%;
-        width: 100%;
-    }
-    .download a img{
-        display: inline-block;
-        width: 25%;
-        padding: 0.1em;
-    }
-    .authors{
-        font-family:'Baloo Da 2';
-        font-size: 1em;
-    }
  }
 /* Pantalla para desktop */
  @media only screen and (min-width: 1000px) {  
@@ -519,26 +554,6 @@
         padding-right: 5%;
         margin-top: 7%;
 
-    }
-    
-    
-    footer{
-        display: flex;
-        justify-content: space-evenly;
-        background-color: rgba(0, 0, 0, 0.493);;
-        color: white;
-        position: absolute;
-        bottom: 0%;
-        width: 100%;
-    }
-    .download a img{
-        display: inline-block;
-        width: 25%;
-        padding: 0.1em;
-    }
-    .authors{
-        font-family:'Baloo Da 2';
-        font-size: 1em;
     }
     
  }
