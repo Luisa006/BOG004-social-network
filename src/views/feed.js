@@ -24,7 +24,7 @@ export default () => {
       containerPost.innerHTML += `
       <div class="stylePost">
         <h3>  ${element.id} </h3>
-        <p> ${element.post} </p>
+        <textarea disabled id=${element.id}> ${element.post} </textarea>
         <button class="delete" data-set=${element.id}> Eliminar </button>   
         <button class="edit" data-id='${element.id}', '${element.post}'> Editar </button>  
        `;
@@ -49,8 +49,11 @@ export default () => {
       btn.addEventListener('click', async ({ target }) => {
         console.log(target.dataset);
         const doc = await editPost(target.dataset.id);
-        const postData = doc.dataset;
-        textPost.value = postData.textPost;
+        document.querySelector(`#${target.dataset.id}`).removeAttribute('disabled');
+
+        // const postData = doc.dataset;
+        // console.log(textPost);
+        // // textPost.value = postData.textPost;
         editFeed = true;
       // editPost(dataset.set);
       });

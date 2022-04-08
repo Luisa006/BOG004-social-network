@@ -26,6 +26,8 @@ export default () => {
   divElem.innerHTML = viewlogIn;
   divElem.querySelector('#btnLogIn').addEventListener('click', (e) => {
     e.preventDefault();
+    // window.location.href = '#/feed';
+    // history.pushState(null, 'LogIn', '#/feed');
     const email = divElem.querySelector('#signup-email').value;
     const password = divElem.querySelector('#signup-password').value;
     console.log(email, password);

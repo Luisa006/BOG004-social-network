@@ -6,7 +6,7 @@ import { GoogleAuthProvider } from './firebaseImport.js';
 
 export const authentication = (email, password, divElem) => createUser(email, password)
   .then(() => {
-    console.log('authentication then')
+    console.log('authentication then');
     changeView('#/logIn');
     // eslint-disable-next-line no-restricted-globals
     history.pushState(null, 'LogIn', '#/logIn');
@@ -38,7 +38,7 @@ export const login = (email, password, divElem) => {
     .then(() => {
       changeView('#/feed');
       // eslint-disable-next-line no-restricted-globals
-      history.pushState(null, 'LogIn', '#/logIn');
+      history.pushState(null, 'LogIn', '#/feed');
     })
     .catch((error) => {
       const errorCode = error.code;
