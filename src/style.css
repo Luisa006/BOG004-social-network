@@ -457,7 +457,7 @@
         margin-top: 1.5%;
         margin-bottom: 3%;
     }
-     .container-Home-Dos{
+     .container-Home-Dos{        
         width: 50%;
         height: 50%;
         margin-top: -2%;
@@ -522,10 +522,10 @@
         text-align: center;
         font-family:'Baloo Da 2';
     }
-    .containerLogIn{       
+    .containerLogIn{              
         background-color: #E28C56 ;
         width: 40%;
-        display: grid;
+        display: grid; 
         float: right;
         justify-items: center;
         margin-top: 4%;
@@ -555,5 +555,28 @@
         margin-top: 7%;
 
     }
-    
+    .sleepyimg{
+        width: 30%;
+        display: block;
+        margin: auto;  
+    }
+     
+    #textPost{
+        font-family:'Baloo Da 2';
+        text-align: center;
+        font-size: 1.5em;
+        background: #F9C2A9;
+        display: block;
+        /* margin: 5%; */
+        margin-top: 1em;
+        margin-bottom: 0%;
+        padding-left: 7%;
+        padding-right: 7%;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 52%, 78% 67%, 85% 86%, 44% 65%, 0 54%);
+
+    }
+    /* .stylePost{
+        clip-path: polygon(0% 0%, 100% 0%, 100% 52%, 78% 67%, 85% 86%, 44% 65%, 0 54%);
+
+    } */
  }

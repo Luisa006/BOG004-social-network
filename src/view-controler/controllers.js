@@ -48,7 +48,7 @@ export const getPosts = async () => {
   const postList = [];
   querySnapshot.forEach((document) => {
     // console.log('doc: ', document);
-    postList.push({ post: document.data().post, id: document.id });
+    postList.push({ post: document.data().post, id: document.id, likes: document.data().likes });
   });
   return postList;
 };
@@ -69,3 +69,15 @@ export const updatePost = (id, newPost) => {
   // Add a new document in collection "cities"
   updateDoc(doc(db, 'Post Paw-Paw', id), newPost);
 };
+
+// export const fnLikes = async (id) => {
+//   try{
+//     const db = getFirestore();
+//     const pawLikes = doc(collection(db, 'Post Paw-Paw'), id);
+
+//     const auth = getAuth(),
+//     const postId = auth.document.id;
+
+//    const likePost = await getDoc()
+//   }
+// };
