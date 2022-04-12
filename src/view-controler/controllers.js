@@ -69,25 +69,27 @@ export const updatePost = (id, newPost) => {
   console.log(newPost);
   const db = getFirestore();
   // Add a new document in collection "cities"
-  updateDoc(doc(db, 'Post Paw-Paw', id), newPost);
+  updateDoc(doc(db, 'Post Paw-Paw', id), { post: newPost, id: id });
 };
 
 export const fnLikes = async (id) => {
   try {
     const db = getFirestore();
-    const pawLikes = doc(collection(db, 'Post Paw-Paw'), id);
+    console.log(id);
+    const pawLikes = doc(db, 'Post Paw-Paw', id);
 
-    const auth = getAuth();
-    const user = auth.document.id;
+    // const auth = getAuth();
+    // const user = auth.document.id;
 
     const likePost = await getDoc(pawLikes);
     let likes = likePost.data().likes;
     if (likes === undefined) {
-      likes = [];
+      likes = 0;
     }
-    const index = likes.indexOf(user.id);
+
+    const index = likes.indexOf(id);
     if (index === -1) {
-      likes.push(user.id);
+      likes.push(id);
     } else {
       likePost.splice(index);
     }

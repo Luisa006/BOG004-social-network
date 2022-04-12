@@ -29,7 +29,7 @@ export default () => {
         <textarea disabled class='textEdit' id=${element.id}> ${element.post} </textarea>        
         <i class="fa-solid fa-trash-can" id="delete" data-set=${element.id}> </i>  
         <i class="fa-solid fa-pen-to-square" id="edit" data-id='${element.id}', '${element.post}'></i> 
-        <i class="fa-solid fa-paw" id="like"></i> <span>${element.likes}</span>
+        <i class="fa-solid fa-paw" id="like" data-id='${element.id}'></i> <span>${element.likes}</span>
         <i class="fa-solid fa-cloud-arrow-up" id="saveEdit" data-id='${element.id}', '${element.post}'></i>                 
        `;
 
@@ -73,10 +73,10 @@ export default () => {
     });
     const btnLike = containerPost.querySelectorAll('#like');
     btnLike.forEach((btn) => {
-      btn.addEventListener('click', ({ target: { dataset } }) => {
+      btn.addEventListener('click', (e) => {
         console.log('boton likes', btn);
-        
-        fnLikes(dataset.id);
+        console.log(e.target.dataset.id);
+        fnLikes(e.target.dataset.id);
       });
     });
 
