@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import { changeView } from "../view-controler/router.js";
-import { savePost, deletePost, getPosts, editPost } from '../view-controler/controllers.js';
+
+import { savePost, deletePost, getPosts, editPost, updatePost, fnLikes } from '../view-controler/controllers.js';
 
 export default () => {
   let editFeed = false;
@@ -28,7 +29,7 @@ export default () => {
         <textarea disabled class='textEdit' id=${element.id}> ${element.post} </textarea>        
         <i class="fa-solid fa-trash-can" id="delete" data-set=${element.id}> </i>  
         <i class="fa-solid fa-pen-to-square" id="edit" data-id='${element.id}', '${element.post}'></i> 
-        <i class="fa-solid fa-paw"></i> <span>${element.likes}</span>
+        <i class="fa-solid fa-paw" id="like"></i> <span>${element.likes}</span>
         <i class="fa-solid fa-cloud-arrow-up" id="saveEdit" data-id='${element.id}', '${element.post}'></i>                 
        `;
 
@@ -43,7 +44,7 @@ export default () => {
       });
     });
     // Publicar Post
-    divElem.querySelector('#btnPublishPost').addEventListener('click', () => { 
+    divElem.querySelector('#btnPublishPost').addEventListener('click', () => {
       // const post = divElem.querySelector('#textPost').value;
       const infoPost = {
         post: divElem.querySelector('#textPost').value,
@@ -61,7 +62,7 @@ export default () => {
         containerPost.querySelector(`#${target.dataset.id}`).removeAttribute('disabled');
         containerPost.querySelector('#saveEdit').addEventListener('click', () => {
           const post = containerPost.querySelector('.textEdit').value;
-          savePost(post);
+          updatePost(target.dataset.id, post);
         });
         // const postData = doc.dataset;
         // console.log(textPost);
@@ -70,6 +71,15 @@ export default () => {
       // editPost(dataset.set);
       });
     });
+    const btnLike = containerPost.querySelectorAll('#like');
+    btnLike.forEach((btn) => {
+      btn.addEventListener('click', ({ target: { dataset } }) => {
+        console.log('boton likes', btn);
+        
+        fnLikes(dataset.id);
+      });
+    });
+
     // divElem.querySelector('.edit').addEventListener('click', ({ target: { dataset } }) => {
     //   console.log('editar', dataset.set);
     //   editPost(dataset.set);

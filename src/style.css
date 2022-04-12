@@ -572,11 +572,33 @@
         margin-bottom: 0%;
         padding-left: 7%;
         padding-right: 7%;
-        clip-path: polygon(0% 0%, 100% 0%, 100% 52%, 78% 67%, 85% 86%, 44% 65%, 0 54%);
+    }
+    #btnPublishPost{
+        margin-top: 1em;
+        margin-bottom: 2em;
 
     }
-    /* .stylePost{
-        clip-path: polygon(0% 0%, 100% 0%, 100% 52%, 78% 67%, 85% 86%, 44% 65%, 0 54%);
-
-    } */
+    .stylePost{
+        position: relative;
+        margin-top: 1px;
+        max-width: 80em;       
+        background-color: #fff;
+        padding: 1.125em 1.5em;
+        font-size: 1.25em;
+        border-radius: 1rem;
+        box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+      }
+      .stylePost:before {
+        content: "";
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        border-left: 24px solid #F9C2A9;
+        border-right: 12px solid transparent;
+        border-top: 12px solid #F9C2A9;
+        border-bottom: 20px solid transparent;
+        left: 32px;
+        bottom: -24px;
+      }
+      
  }

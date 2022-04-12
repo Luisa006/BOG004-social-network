@@ -2,7 +2,7 @@
 import {
   getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification,
   GoogleAuthProvider, signInWithPopup,
-  getFirestore, collection, getDocs, addDoc, deleteDoc, doc, updateDoc, getDoc,
+  getFirestore, collection, getDocs, addDoc, deleteDoc, doc, updateDoc, getDoc, setDoc,
 } from '../firebase/firebaseImport.js';
 
 export const createUser = (email, password) => {
@@ -35,15 +35,16 @@ export const userGoogle = () => {
 
 export const savePost = async (post) => {
   const db = getFirestore(); // lo acabe de agregar
-  const docRef = await addDoc(collection(db, 'Post Paw-Paw'), {
+  const docRef = await addDoc(
+    collection(db, 'Post Paw-Paw'),
     post,
-  });
+  );
   // console.log('Document written with ID: ', docRef.id);
   console.log(post);
 };
 
 export const getPosts = async () => {
-  const db = getFirestore(); // lo acabe
+  const db = getFirestore();
   const querySnapshot = await getDocs(collection(db, 'Post Paw-Paw'));
   const postList = [];
   querySnapshot.forEach((document) => {
@@ -65,19 +66,42 @@ export const editPost = async (id) => {
 };
 
 export const updatePost = (id, newPost) => {
+  console.log(newPost);
   const db = getFirestore();
   // Add a new document in collection "cities"
   updateDoc(doc(db, 'Post Paw-Paw', id), newPost);
 };
 
-// export const fnLikes = async (id) => {
-//   try{
-//     const db = getFirestore();
-//     const pawLikes = doc(collection(db, 'Post Paw-Paw'), id);
+export const fnLikes = async (id) => {
+  try {
+    const db = getFirestore();
+    const pawLikes = doc(collection(db, 'Post Paw-Paw'), id);
 
-//     const auth = getAuth(),
-//     const postId = auth.document.id;
+    const auth = getAuth();
+    const user = auth.document.id;
 
-//    const likePost = await getDoc()
-//   }
-// };
+    const likePost = await getDoc(pawLikes);
+    let likes = likePost.data().likes;
+    if (likes === undefined) {
+      likes = [];
+    }
+    const index = likes.indexOf(user.id);
+    if (index === -1) {
+      likes.push(user.id);
+    } else {
+      likePost.splice(index);
+    }
+    await setDoc(
+      pawLikes,
+      {
+        likes,
+      },
+      { merge: true },
+    );
+    console.log('document update with ID:', pawLikes.id);
+    getPosts();
+  } catch (e) {
+    console.log('Error adding document: ', e);
+  }
+  getPosts();
+};
